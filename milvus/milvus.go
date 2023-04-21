@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/go-aie/gptbot"
+	"github.com/coseyo/gptbot"
 	"github.com/go-aie/xslices"
 	"github.com/milvus-io/milvus-sdk-go/v2/client"
 	"github.com/milvus-io/milvus-sdk-go/v2/entity"

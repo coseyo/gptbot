@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go-aie/gptbot"
+	"github.com/coseyo/gptbot"
 )
 
 func Example() {

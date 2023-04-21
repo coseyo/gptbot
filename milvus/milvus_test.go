@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/go-aie/gptbot"
-	"github.com/go-aie/gptbot/milvus"
+	"github.com/coseyo/gptbot"
+	"github.com/coseyo/gptbot/milvus"
 	"github.com/google/go-cmp/cmp"
 )
 

@@ -10,7 +10,7 @@ import (
 	"strings"
 
 	"github.com/RussellLuo/kun/pkg/httpcodec"
-	"github.com/go-aie/gptbot"
+	"github.com/coseyo/gptbot"
 )
 
 type HTTPClient struct {

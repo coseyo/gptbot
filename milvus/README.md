@@ -21,7 +21,7 @@ $ go test -v -race
 === RUN   TestMilvus_Query
 --- PASS: TestMilvus_Query (7.34s)
 PASS
-ok  	github.com/go-aie/gptbot/milvus	7.866s
+ok  	github.com/coseyo/gptbot/milvus	7.866s
 ```
 
 

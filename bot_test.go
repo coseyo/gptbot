@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/go-aie/gptbot"
+	"github.com/coseyo/gptbot"
 )
 
 func TestBot_Chat(t *testing.T) {

@@ -1,6 +1,6 @@
 # GPTBot
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/go-aie/gptbot/vulndb.svg)][1]
+[![Go Reference](https://pkg.go.dev/badge/github.com/coseyo/gptbot/vulndb.svg)][1]
 
 Question Answering Bot powered by [OpenAI GPT models][2].
 
@@ -8,7 +8,7 @@ Question Answering Bot powered by [OpenAI GPT models][2].
 ## Installation
 
 ```bash
-$ go get -u github.com/go-aie/gptbot
+$ go get -u github.com/coseyo/gptbot
 ```
 
 
@@ -87,10 +87,10 @@ GPTBot is an implementation of the method demonstrated in [Question Answering us
 [MIT](LICENSE)
 
 
-[1]: https://pkg.go.dev/github.com/go-aie/gptbot
+[1]: https://pkg.go.dev/github.com/coseyo/gptbot
 [2]: https://platform.openai.com/docs/models
 [3]: https://github.com/openai/openai-cookbook/blob/main/examples/Question_answering_using_embeddings.ipynb
-[4]: https://pkg.go.dev/github.com/go-aie/gptbot#Preprocessor
-[5]: https://pkg.go.dev/github.com/go-aie/gptbot#OpenAIEncoder
-[6]: https://pkg.go.dev/github.com/go-aie/gptbot#LocalVectorStore
-[7]: https://pkg.go.dev/github.com/go-aie/gptbot/milvus#Milvus
+[4]: https://pkg.go.dev/github.com/coseyo/gptbot#Preprocessor
+[5]: https://pkg.go.dev/github.com/coseyo/gptbot#OpenAIEncoder
+[6]: https://pkg.go.dev/github.com/coseyo/gptbot#LocalVectorStore
+[7]: https://pkg.go.dev/github.com/coseyo/gptbot/milvus#Milvus

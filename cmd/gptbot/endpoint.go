@@ -9,7 +9,7 @@ import (
 	"github.com/RussellLuo/kun/pkg/httpcodec"
 	"github.com/RussellLuo/kun/pkg/httpoption"
 	"github.com/RussellLuo/validating/v3"
-	"github.com/go-aie/gptbot"
+	"github.com/coseyo/gptbot"
 	"github.com/go-kit/kit/endpoint"
 )
 
