@@ -18,13 +18,14 @@ require (
 )
 
 require (
-	github.com/dlclark/regexp2 v1.7.0 // indirect
+	github.com/dlclark/regexp2 v1.9.0 // indirect
 	github.com/go-kit/log v0.2.0 // indirect
 	github.com/go-logfmt/logfmt v0.5.1 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0 // indirect
 	github.com/milvus-io/milvus-proto/go-api v0.0.0-20230301092744-7efc6eec15fd // indirect
-	github.com/samber/lo v1.37.0 // indirect
+	github.com/samber/lo v1.38.1 // indirect
+	github.com/yanyiwu/gojieba v1.3.0 // indirect
 	golang.org/x/net v0.0.0-20220722155237-a158d28d115b // indirect
 	golang.org/x/sys v0.1.0 // indirect
 	golang.org/x/text v0.3.7 // indirect
