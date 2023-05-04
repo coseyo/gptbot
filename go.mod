@@ -13,6 +13,7 @@ require (
 	github.com/milvus-io/milvus-sdk-go/v2 v2.2.1
 	github.com/rakyll/openai-go v1.0.9
 	github.com/samber/go-gpt-3-encoder v0.3.1
+	github.com/yanyiwu/gojieba v1.3.0
 	golang.org/x/exp v0.0.0-20230420155640-133eef4313cb
 	gonum.org/v1/gonum v0.12.0
 )
@@ -25,10 +26,9 @@ require (
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0 // indirect
 	github.com/milvus-io/milvus-proto/go-api v0.0.0-20230301092744-7efc6eec15fd // indirect
 	github.com/samber/lo v1.38.1 // indirect
-	github.com/yanyiwu/gojieba v1.3.0 // indirect
-	golang.org/x/net v0.0.0-20220722155237-a158d28d115b // indirect
-	golang.org/x/sys v0.1.0 // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/net v0.9.0 // indirect
+	golang.org/x/sys v0.7.0 // indirect
+	golang.org/x/text v0.9.0 // indirect
 	google.golang.org/genproto v0.0.0-20220503193339-ba3ae3f07e29 // indirect
 	google.golang.org/grpc v1.48.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect

@@ -3,6 +3,8 @@ package gptbot
 import (
 	"bytes"
 	"context"
+	"encoding/json"
+	"fmt"
 	"strings"
 	"text/template"
 
@@ -83,6 +85,12 @@ type BotConfig struct {
 	// and can refine incomplete questions according to the conversation history
 	// before consulting the backend system (i.e. the single-turn Question Answering Bot).
 	MultiTurnPromptTmpl string
+
+	// Debug set true to show the http request and response message
+	Debug bool
+
+	// DictPaths is the jieba dictionary paths.
+	DictPaths []string
 }
 
 func (cfg *BotConfig) init() {
@@ -104,9 +112,10 @@ func (cfg *BotConfig) init() {
 }
 
 type Bot struct {
-	cfg        *BotConfig
-	chatClient *chat.Client
-	compClient *completion.Client
+	cfg         *BotConfig
+	chatClient  *chat.Client
+	compClient  *completion.Client
+	wordSegment *WordSegment
 }
 
 func NewBot(cfg *BotConfig) *Bot {
@@ -123,6 +132,8 @@ func NewBot(cfg *BotConfig) *Bot {
 	default:
 		panic("unsupported gpt model!")
 	}
+
+	bot.wordSegment = NewWordSegment(cfg.DictPaths...)
 
 	return bot
 }
@@ -166,6 +177,8 @@ func (b *Bot) multiTurnChat(ctx context.Context, question string, history ...*Tu
 }
 
 func (b *Bot) singleTurnChat(ctx context.Context, question string) (string, error) {
+	// chinese word segment
+	question = b.wordSegment.Segment(question)
 	prompt, err := b.cfg.constructPrompt(ctx, question)
 	if err != nil {
 		return "", err
@@ -191,6 +204,7 @@ func (b *Bot) doChatCompletion(ctx context.Context, prompt string) (string, erro
 			},
 		},
 	})
+	defer b.log(prompt, resp)
 	if err != nil {
 		return "", err
 	}
@@ -205,6 +219,7 @@ func (b *Bot) doCompletion(ctx context.Context, prompt string) (string, error) {
 		MaxTokens: b.cfg.MaxTokens,
 		Prompt:    []string{prompt},
 	})
+	defer b.log(prompt, resp)
 	if err != nil {
 		return "", err
 	}
@@ -234,6 +249,13 @@ func (b *BotConfig) constructPrompt(ctx context.Context, question string) (strin
 		Question: question,
 		Sections: texts,
 	})
+}
+
+func (b *Bot) log(req, resp any) {
+	if b.cfg.Debug {
+		b, _ := json.Marshal(resp)
+		fmt.Printf("req:\n%v\n\nresp:\n%v\n\n", req, string(b))
+	}
 }
 
 type PromptData struct {

@@ -41,6 +41,7 @@ type GPTBot struct {
 }
 
 func NewGPTBot(feeder *gptbot.Feeder, store *milvus.Milvus, bot *gptbot.Bot) *GPTBot {
+
 	return &GPTBot{
 		feeder: feeder,
 		store:  store,

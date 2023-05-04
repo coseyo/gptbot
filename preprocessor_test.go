@@ -1,10 +1,13 @@
 package gptbot_test
 
 import (
+	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/coseyo/gptbot"
 	"github.com/google/go-cmp/cmp"
+	"github.com/yanyiwu/gojieba"
 )
 
 func TestPreprocessor_Preprocess(t *testing.T) {
@@ -67,4 +70,18 @@ func TestPreprocessor_Preprocess(t *testing.T) {
 			t.Errorf("Want - Got: %s", diff)
 		}
 	}
+}
+
+func TestPreprocessor_Jieba(t *testing.T) {
+	t.Log("start jieba")
+	var s string
+	var words []string
+	x := gojieba.NewJieba()
+	defer x.Free()
+
+	s = "我来到北京清华大学"
+	// words = x.CutAll(s)
+	words = x.Cut(s, true)
+	fmt.Println(s)
+	fmt.Println("全模式:", strings.Join(words, "/"))
 }

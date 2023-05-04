@@ -28,6 +28,9 @@ type PreprocessorConfig struct {
 	// MaxChunkNum is the maximum number of chunks to generate from a text.
 	// Defaults to 10000.
 	MaxChunkNum int
+
+	// DictPaths is the jieba dictionary paths.
+	DictPaths []string
 }
 
 func (cfg *PreprocessorConfig) init() *PreprocessorConfig {
@@ -48,14 +51,17 @@ func (cfg *PreprocessorConfig) init() *PreprocessorConfig {
 
 // Preprocessor splits a list of documents into chunks.
 type Preprocessor struct {
-	encoder *dummyTokenizer
-	cfg     *PreprocessorConfig
+	encoder     *dummyTokenizer
+	wordSegment *WordSegment
+	cfg         *PreprocessorConfig
 }
 
 func NewPreprocessor(cfg *PreprocessorConfig) *Preprocessor {
+	cfg = cfg.init()
 	return &Preprocessor{
-		encoder: newDummyTokenizer(),
-		cfg:     cfg.init(),
+		encoder:     newDummyTokenizer(),
+		wordSegment: NewWordSegment(cfg.DictPaths...),
+		cfg:         cfg,
 	}
 }
 
@@ -68,6 +74,7 @@ func (p *Preprocessor) Preprocess(docs ...*Document) (map[string][]*Chunk, error
 			docID = uuid.New().String()
 		}
 
+		doc.Text = p.wordSegment.Segment(doc.Text)
 		textChunks, err := p.split(doc.Text)
 		if err != nil {
 			return nil, err
